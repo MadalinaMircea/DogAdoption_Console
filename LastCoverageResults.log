@@ -1,0 +1,96 @@
+[2017-04-23 11:12:09] [info] Start Program:
+Path:"./x64/Debug/Lab5-6.exe"
+Arguments:
+Working directory: not set.
+Modules: Selected: * Excluded: 
+Sources: Selected: Lab5-6 Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: Html 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+
+[2017-04-23 11:12:09] [info] Module: C:\Users\Madalina\Documents\Visual Studio 2017\Projects\Lab5-6\x64\Debug\Lab5-6.exe is selected because it matches selected pattern: *
+[2017-04-23 11:12:09] [info] Module: C:\Windows\System32\ntdll.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:09] [warning] Cannot find pdb for C:\Windows\System32\ntdll.dll
+[2017-04-23 11:12:09] [info] Module: C:\Windows\System32\kernel32.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:09] [warning] Cannot find pdb for C:\Windows\System32\kernel32.dll
+[2017-04-23 11:12:09] [info] Module: C:\Windows\System32\KernelBase.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:09] [warning] Cannot find pdb for C:\Windows\System32\KernelBase.dll
+[2017-04-23 11:12:09] [info] Module: C:\Windows\System32\shell32.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\shell32.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\msvcp140d.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\msvcp140d.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\vcruntime140d.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\vcruntime140d.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\ucrtbased.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\ucrtbased.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\msvcrt.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\msvcrt.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\combase.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\combase.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\user32.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\user32.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\shlwapi.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\shlwapi.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\gdi32.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\gdi32.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\rpcrt4.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\rpcrt4.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\sspicli.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\sspicli.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\sechost.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\sechost.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\imm32.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\imm32.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\msctf.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\msctf.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\SHCore.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\SHCore.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\kernel.appcore.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\kernel.appcore.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\cryptbase.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\cryptbase.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\bcryptprimitives.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\bcryptprimitives.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\uxtheme.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\uxtheme.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\ole32.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\ole32.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\propsys.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\propsys.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\oleaut32.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\oleaut32.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\advapi32.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\advapi32.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\setupapi.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\setupapi.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\cfgmgr32.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\cfgmgr32.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\clbcatq.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\clbcatq.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\profapi.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\profapi.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\cryptsp.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\cryptsp.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\rsaenh.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\rsaenh.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\bcrypt.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\bcrypt.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\urlmon.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\urlmon.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\iertutil.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\iertutil.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\wininet.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\wininet.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\userenv.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\userenv.dll
+[2017-04-23 11:12:10] [info] Module: C:\Windows\System32\secur32.dll is selected because it matches selected pattern: *
+[2017-04-23 11:12:10] [warning] Cannot find pdb for C:\Windows\System32\secur32.dll
+[2017-04-23 11:12:11] [info] ----------------------------------------------------
+[2017-04-23 11:12:11] [info] Coverage generated in Folder C:\Users\Madalina\Documents\Visual Studio 2017\Projects\Lab5-6\CoverageReport-2017-04-23-11h12m10s
+[2017-04-23 11:12:11] [info] ----------------------------------------------------

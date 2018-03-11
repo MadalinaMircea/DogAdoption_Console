@@ -1,0 +1,362 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>ui.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "UI.h"
+#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#include&lt;iomanip&gt;
+using namespace std;
+
+UI::UI(Controller* ctrl)
+<span style = "background-color:#fdd">{
+	this-&gt;ctrl = ctrl;
+}</span>
+
+UI::~UI()
+<span style = "background-color:#fdd">{
+	delete ctrl;
+}</span>
+void UI::printCommandsAdmin()
+<span style = "background-color:#fdd">{
+	cout &lt;&lt; "\nType:\n\</span>
+	'1' - add a dog\n\
+	'2' - remove a dog\n\
+	'3' - update a dog\n\
+	'4' - list all dogs\n\
+	'5' - show number of instances\n\
+	'0' - exit\n\n";
+<span style = "background-color:#fdd">}</span>
+
+void UI::printCommandsUser()
+<span style = "background-color:#fdd">{
+	cout &lt;&lt; "\nType:\n\</span>
+	'1' - see all the dogs\n\
+	'2' - see filtred dogs\n\
+	'3' - see adoption list\n\
+	'0' - adopt and exit\n\n";
+<span style = "background-color:#fdd">}</span>
+
+int stringToInt(string nr)
+<span style = "background-color:#fdd">{
+	int result = 0;</span>
+
+<span style = "background-color:#fdd">	for (unsigned int i = 0; i &lt; nr.length(); i++)
+		if (nr[i] &gt;= 48 &amp;&amp; nr[i] &lt;= 57)
+			result = result * 10 + (nr[i] - 48);
+		else
+			return -1;</span>
+
+<span style = "background-color:#fdd">	return result;
+}</span>
+
+void UI::add()
+<span style = "background-color:#fdd">{
+	string breed, name, photo, agec;</span>
+	int age;
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give the breed: ";
+	getline(cin, breed);</span>
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give the name: ";
+	getline(cin, name);</span>
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give the age: ";
+	getline(cin, agec);</span>
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give the photograph link: ";
+	getline(cin, photo);</span>
+
+<span style = "background-color:#fdd">	age = stringToInt(agec);
+	if (age != -1 &amp;&amp; breed.length() != 0 &amp;&amp; name.length() != 0 &amp;&amp; photo.length() != 0)</span>
+	{
+<span style = "background-color:#fdd">		bool result = this-&gt;ctrl-&gt;add(breed, name, age, photo);
+		if (result == true)
+			cout &lt;&lt; "The dog has been added.\n";
+		else
+			cout &lt;&lt; "A dog with this breed and name already exists.\n";</span>
+	}
+<span style = "background-color:#fdd">	else
+		cout &lt;&lt; "Invalid input.\n";
+}</span>
+
+void UI::remove()
+<span style = "background-color:#fdd">{</span>
+
+<span style = "background-color:#fdd">	string breed, name;</span>
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give the breed: ";
+	getline(cin, breed);</span>
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give the name: ";
+	getline(cin, name);</span>
+
+<span style = "background-color:#fdd">	if (breed.length() == 0 || name.length() == 0)
+		cout &lt;&lt; "Invalid input.\n";
+	else</span>
+	{
+<span style = "background-color:#fdd">		bool result = this-&gt;ctrl-&gt;remove(breed, name);
+		if (result == true)
+			cout &lt;&lt; "The dog has been removed.\n";
+		else
+			cout &lt;&lt; "A dog with this breed and name does not exist.\n";</span>
+	}
+<span style = "background-color:#fdd">}</span>
+
+void UI::update()
+<span style = "background-color:#fdd">{
+	string breed, name, photo, agec, newBreed, newName;</span>
+	int age;
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give the breed: ";
+	getline(cin, breed);</span>
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give the name: ";
+	getline(cin, name);</span>
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give the new breed (ENTER for unchanged): ";
+	getline(cin, newBreed);</span>
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give the new name (ENTER for unchanged): ";
+	getline(cin, newName);</span>
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give the new age (ENTER for unchanged): ";
+	getline(cin, agec);</span>
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give the new photo link (ENTER for unchanged): ";
+	getline(cin, photo);</span>
+
+<span style = "background-color:#fdd">	if (breed.length() == 0 || name.length() == 0)
+		cout &lt;&lt; "Invalid input.\n";
+	else</span>
+	{
+<span style = "background-color:#fdd">		if (newBreed.length() == 0)
+			newBreed = breed;
+		if (newName.length() == 0)
+			newName = name;
+		age = stringToInt(agec);</span>
+
+<span style = "background-color:#fdd">		bool result = this-&gt;ctrl-&gt;update(breed, name, age, photo, newBreed, newName);
+		if (result == false)
+			cout &lt;&lt; "A dog with this breed and name does not exist.\n";
+		else
+			cout &lt;&lt; "The information had been updated.\n";</span>
+	}
+<span style = "background-color:#fdd">}</span>
+
+void printDog(Dog dog)
+<span style = "background-color:#fdd">{
+	cout &lt;&lt; left &lt;&lt; setw(20) &lt;&lt; dog.breed &lt;&lt; setw(20) &lt;&lt; dog.name &lt;&lt; setw(6) &lt;&lt; dog.age &lt;&lt; dog.photo &lt;&lt; '\n';
+}</span>
+
+void UI::listAll(Repository* repo)
+<span style = "background-color:#fdd">{
+	if (repo-&gt;dogs.getSize() == 0)
+		cout &lt;&lt; "The list is empty.\n";
+	else</span>
+	{
+<span style = "background-color:#fdd">		cout &lt;&lt; left &lt;&lt; setw(20) &lt;&lt; "Breed" &lt;&lt; setw(20) &lt;&lt; "Name" &lt;&lt; setw(6) &lt;&lt; "Age" &lt;&lt; "Photo\n";
+		cout &lt;&lt; "_______________________________________________________________________________________\n";
+		for (auto d : repo-&gt;dogs.elems)
+			printDog(d);</span>
+	}
+<span style = "background-color:#fdd">}</span>
+
+void listInstances()
+<span style = "background-color:#fdd">{
+	cout &lt;&lt; "Current instances: " &lt;&lt; Dog::getCurrentInstances() &lt;&lt; '\n';
+	cout &lt;&lt; "All instances: " &lt;&lt; Dog::getAllInstances() &lt;&lt; '\n';
+}</span>
+
+void UI::startAdmin()
+<span style = "background-color:#fdd">{
+	int keepAlive = 1;</span>
+	char cmd;
+
+<span style = "background-color:#fdd">	while (keepAlive)</span>
+	{
+<span style = "background-color:#fdd">		this-&gt;printCommandsAdmin();</span>
+
+<span style = "background-color:#fdd">		cout &lt;&lt; "Give command: ";
+		cin &gt;&gt; cmd; cin.get();</span>
+
+<span style = "background-color:#fdd">		if (cmd == '1')
+			this-&gt;add();
+		else if (cmd == '2')
+			this-&gt;remove();
+		else if (cmd == '3')
+			this-&gt;update();
+		else if (cmd == '4')
+			this-&gt;listAll(this-&gt;ctrl-&gt;repo);
+		else if (cmd == '5')
+			listInstances();
+		else if (cmd == '0')
+			keepAlive = 0;
+		else
+			cout &lt;&lt; "Invalid input.";
+	}
+}</span>
+
+void printOptions()
+<span style = "background-color:#fdd">{
+	cout &lt;&lt; "\nType:\n\</span>
+	'1' - show picture\n\
+	'2' - adopt\n\
+	'3' - next\n\
+	'0' - exit\n\
+Give command: ";
+<span style = "background-color:#fdd">}</span>
+
+void UI::showAll(Repository* repo, Repository* adoptionList)
+<span style = "background-color:#fdd">{
+	int alive = 1, i = 0, length = repo-&gt;dogs.getSize();</span>
+	char mode;
+	
+<span style = "background-color:#fdd">	while (alive &amp;&amp; length &gt; 0)</span>
+	{
+<span style = "background-color:#fdd">		if (i == length)
+			i = 0;</span>
+
+<span style = "background-color:#fdd">		printDog(repo-&gt;dogs.elems[i]);
+		printOptions();
+		cin &gt;&gt; mode;</span>
+
+<span style = "background-color:#fdd">		if (mode == '1')
+			repo-&gt;dogs.elems[i].showPicture();
+		else if (mode == '2')</span>
+		{
+<span style = "background-color:#fdd">			adoptionList-&gt;add(repo-&gt;dogs.elems[i]);
+			cout &lt;&lt; '\n' &lt;&lt; repo-&gt;dogs.elems[i].name &lt;&lt; " has been added to your adoption list!\n\n";
+			this-&gt;ctrl-&gt;remove(repo-&gt;dogs.elems[i].breed, repo-&gt;dogs.elems[i].name);
+			if(repo != this-&gt;ctrl-&gt;repo)
+				repo-&gt;remove(i);
+			length--;</span>
+		}
+<span style = "background-color:#fdd">		else if (mode == '3')
+			i++;
+		else if (mode == '0')
+			alive = 0;
+		else
+			cout &lt;&lt; "Invalid input.\n";
+	}</span>
+
+<span style = "background-color:#fdd">	if (length == 0)
+		cout &lt;&lt; "There are no dogs available.";
+}</span>
+
+void UI::showFiltered(Repository* adoptionList)
+<span style = "background-color:#fdd">{
+	Repository* filtered = new Repository;</span>
+
+<span style = "background-color:#fdd">	string breed, agec;</span>
+	int age;
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give the breed: ";
+	getline(cin, breed);</span>
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Give age: ";
+	getline(cin, agec);</span>
+
+<span style = "background-color:#fdd">	age = stringToInt(agec);</span>
+
+<span style = "background-color:#fdd">	if (age == 0)
+		cout &lt;&lt; "Invalid input.\n";
+	else</span>
+	{
+<span style = "background-color:#fdd">		if (breed.size() == 0)</span>
+		{
+<span style = "background-color:#fdd">			for (auto d : this-&gt;ctrl-&gt;repo-&gt;dogs.elems)
+				if (d.age &lt; age)
+					filtered-&gt;add(d);
+		}
+		else</span>
+		{
+<span style = "background-color:#fdd">			for (auto d : this-&gt;ctrl-&gt;repo-&gt;dogs.elems)
+				if (d.breed == breed &amp;&amp; d.age &lt; age)
+					filtered-&gt;add(d);
+		}</span>
+
+<span style = "background-color:#fdd">		showAll(filtered, adoptionList);</span>
+	}
+
+<span style = "background-color:#fdd">	delete filtered;
+}</span>
+
+void UI::adopt(Repository adoptionList)
+<span style = "background-color:#fdd">{
+	if (adoptionList.dogs.getSize() == 1)
+		cout &lt;&lt; "Thank you for adopting one dog!\n";
+	else if(adoptionList.dogs.getSize() != 0)
+		cout &lt;&lt; "Thank you for adopting " &lt;&lt; adoptionList.dogs.getSize() &lt;&lt; " dogs!\n";
+}</span>
+
+void UI::startUser()
+<span style = "background-color:#fdd">{
+	int keepAlive = 1;</span>
+	char cmd;
+
+<span style = "background-color:#fdd">	Repository* adoptionList = new Repository;</span>
+
+<span style = "background-color:#fdd">	while (keepAlive)</span>
+	{
+<span style = "background-color:#fdd">		this-&gt;printCommandsUser();</span>
+
+<span style = "background-color:#fdd">		cout &lt;&lt; "Give command: ";
+		cin &gt;&gt; cmd; cin.get();</span>
+
+<span style = "background-color:#fdd">		if (cmd == '1')
+			this-&gt;showAll(this-&gt;ctrl-&gt;repo, adoptionList);
+		else if (cmd == '2')
+			this-&gt;showFiltered(adoptionList);
+		else if (cmd == '3')
+			this-&gt;listAll(adoptionList);
+		else if (cmd == '0')</span>
+		{
+<span style = "background-color:#fdd">			adopt(*adoptionList);
+			keepAlive = 0;</span>
+		}
+<span style = "background-color:#fdd">		else
+			cout &lt;&lt; "Invalid input.";
+	}</span>
+
+<span style = "background-color:#fdd">	delete adoptionList;
+}</span>
+
+void UI::start()
+<span style = "background-color:#fdd">{
+	cout &lt;&lt; "Welcome!\n";</span>
+
+	char mode;
+<span style = "background-color:#fdd">	int still = 1;</span>
+
+<span style = "background-color:#fdd">	while (still)</span>
+	{
+<span style = "background-color:#fdd">		cout &lt;&lt; "Open in:\n\</span>
+	'1' - Administrator mode\n\
+	'2' - User mode\n\
+	'0' - exit\n\
+Give mode: ";
+<span style = "background-color:#fdd">		cin &gt;&gt; mode; cin.get();</span>
+
+<span style = "background-color:#fdd">		if (mode == '1')
+			this-&gt;startAdmin();
+		else if (mode == '2')
+			this-&gt;startUser();
+		else if (mode == '0')
+			still = 0;
+		else
+			cout &lt;&lt; "Invalid input.";
+	}</span>
+
+<span style = "background-color:#fdd">	cout &lt;&lt; "Goodbye!\n";
+}</span></pre>
+	</body>
+</html>

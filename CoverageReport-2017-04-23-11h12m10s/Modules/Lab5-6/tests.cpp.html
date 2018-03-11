@@ -1,0 +1,186 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>tests.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "Controller.h"
+#include "assert.h"
+#include "tests.h"
+#include&lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+void testDog()
+<span style = "background-color:#dfd">{
+	string breed = "Beagle", name = "Sean", photo = "www.google.com";
+	Dog dog = Dog{ breed, name, 3, photo };
+	photo = "www.facebook.com";
+	Dog doggo = Dog{ breed, name, 5, photo };</span>
+
+<span style = "background-color:#dfd">	assert(dog == doggo);</span>
+
+<span style = "background-color:#dfd">	assert(dog.getCurrentInstances() == 2);
+	assert(dog.getAllInstances() &gt; 0);</span>
+	
+<span style = "background-color:#dfd">	assert(dog.breed == "Beagle");
+	assert(dog.name ==  "Sean");
+	assert(dog.photo == "www.google.com");
+	assert(dog.age == 3);</span>
+
+<span style = "background-color:#dfd">	dog.setAge(6);
+	assert(dog.age == 6);</span>
+
+<span style = "background-color:#dfd">	dog.changePhoto("www.facebook.com");
+	assert(dog.photo == "www.facebook.com");</span>
+
+<span style = "background-color:#dfd">	breed = "Westie"; name = "Bolt"; photo = "www.facebook.com";
+	dog = Dog{ breed, name, 1, photo };</span>
+
+<span style = "background-color:#dfd">	assert(dog.breed == "Westie");
+	assert(dog.name == "Bolt");
+	assert(dog.photo == "www.facebook.com");
+	assert(dog.age == 1);</span>
+
+<span style = "background-color:#dfd">	dog.setAge(10);
+	assert(dog.age == 10);</span>
+
+<span style = "background-color:#dfd">	dog.changePhoto("www.google.com");
+	assert(dog.photo == "www.google.com");</span>
+
+<span style = "background-color:#dfd">	dog.changeName("Bolty");
+	assert(dog.name == "Bolty");</span>
+
+<span style = "background-color:#dfd">	dog.changeBreed("Pomeranian");
+	assert(dog.breed == "Pomeranian");</span>
+
+<span style = "background-color:#dfd">	dog.showPicture();
+}</span>
+
+void testRepository()
+<span style = "background-color:#dfd">{
+	Repository* repo = new Repository;</span>
+	
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.getSize() == 0);</span>
+	
+<span style = "background-color:#dfd">	repo-&gt;init();
+	assert(repo-&gt;dogs.getSize() == 10);</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[0].breed == "Beagle");</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[2].name == "Bez");</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[6].photo == "https://s-media-cache-ak0.pinimg.com/736x/20/69/00/206900a83822e1a875f0617a33cecf07.jpg");</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[9].age == 1);</span>
+
+<span style = "background-color:#dfd">	string breed = "Bulldog", name = "Dancer", photo = "website";
+	Dog dog = Dog{ breed, name, 3, photo };</span>
+
+<span style = "background-color:#dfd">	repo-&gt;add(dog);</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.getSize() == 11);</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[10].age == 3);</span>
+	
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[10].breed == "Bulldog");</span>
+	
+<span style = "background-color:#dfd">	repo-&gt;update(4, 5, "WWW", "Bichon Frise", "Vixen");</span>
+	
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[4].name == "Vixen");</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[4].age == 5);</span>
+
+<span style = "background-color:#dfd">	repo-&gt;remove(6);</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[6].age == 2);</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.getSize() == 10);</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[8].name == "Minnie");</span>
+	
+<span style = "background-color:#dfd">	delete repo;
+}</span>
+
+void testDynamicVector()
+<span style = "background-color:#dfd">{
+	DynamicVectorSTL&lt;Dog&gt; elements;</span>
+
+<span style = "background-color:#dfd">	string breed = "Beagle", name = "Sean", photo = "www.google.com";
+	Dog dog = Dog{ breed, name, 3, photo };</span>
+
+<span style = "background-color:#dfd">	elements = elements + dog;
+	elements = dog + elements;</span>
+
+<span style = "background-color:#dfd">	assert(elements.getSize() == 2);</span>
+	
+<span style = "background-color:#dfd">	DynamicVectorSTL&lt;Dog&gt; newElements = DynamicVectorSTL&lt;Dog&gt;(elements);</span>
+	
+<span style = "background-color:#dfd">	assert(newElements.getSize() == 2);</span>
+	
+<span style = "background-color:#dfd">}</span>
+
+void testController()
+<span style = "background-color:#dfd">{
+	Repository* repo = new Repository;
+	Controller* ctrl = new Controller{ repo };</span>
+
+<span style = "background-color:#dfd">	assert(ctrl-&gt;repo-&gt;dogs.getSize() == 0);</span>
+
+<span style = "background-color:#dfd">	ctrl-&gt;repo-&gt;init();</span>
+
+<span style = "background-color:#dfd">	assert(ctrl-&gt;repo-&gt;dogs.getSize() == 10);</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[1].breed == "Westie");</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[5].name == "Boy");</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[7].photo == "http://i.huffpost.com/gen/3753474/images/o-PUG-facebook.jpg");</span>
+
+<span style = "background-color:#dfd">	assert(repo-&gt;dogs.elems[3].age == 3);</span>
+
+<span style = "background-color:#dfd">	string breed = "Pomeranian", name = "Minnie", photo = "WWW";
+	assert(ctrl-&gt;add(breed, name, 4, photo) == false);</span>
+
+<span style = "background-color:#dfd">	breed = "Boo"; name = "Baby"; photo = "WWW";
+	assert(ctrl-&gt;add(breed, name, 1, photo) == true);</span>
+
+<span style = "background-color:#dfd">	assert(ctrl-&gt;repo-&gt;dogs.getSize() == 11);</span>
+
+<span style = "background-color:#dfd">	breed = "Bulldog"; name = "Wrinkle"; photo = "WWW";
+	string newBreed = "Bulldog", newName = "Wrinkles";
+	assert(ctrl-&gt;update(breed, name, 3, photo, newBreed, newName) == false);</span>
+
+<span style = "background-color:#dfd">	breed = "Beagle"; name = "Bailey"; photo = "WWW"; newBreed = "Beagle"; newName = "Bailey";
+	assert(ctrl-&gt;update(breed, name, 6, photo, newBreed, newName) == true);</span>
+
+<span style = "background-color:#dfd">	assert(ctrl-&gt;repo-&gt;dogs.elems[0].age == 6);</span>
+
+<span style = "background-color:#dfd">	breed = "Snautzer"; name = "Chris";
+	assert(ctrl-&gt;remove(breed, name) == false);</span>
+
+<span style = "background-color:#dfd">	breed = "Pomeranian"; name = "Minnie";
+	assert(ctrl-&gt;remove(breed, name) == true);</span>
+
+<span style = "background-color:#dfd">	assert(ctrl-&gt;repo-&gt;dogs.getSize() == 10);</span>
+
+<span style = "background-color:#dfd">	breed = "Beagle"; name = "Bailey"; photo = ""; newBreed = ""; newName = "";
+	assert(ctrl-&gt;update(breed, name, 0, photo, newBreed, newName) == true);</span>
+
+<span style = "background-color:#dfd">	delete ctrl;
+}</span>
+
+void runAllTests()
+<span style = "background-color:#dfd">{
+	testDog();
+	testRepository();
+	testController();
+	testDynamicVector();
+}</span></pre>
+	</body>
+</html>

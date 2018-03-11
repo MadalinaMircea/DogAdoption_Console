@@ -1,0 +1,75 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>controller.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "Controller.h"
+
+Controller::Controller(Repository* repo)
+<span style = "background-color:#dfd">{
+	this-&gt;repo = repo;
+}</span>
+
+Controller::~Controller()
+<span style = "background-color:#dfd">{
+	delete repo;
+}</span>
+
+bool Controller::add(string breed, string name, int age, string photo)
+<span style = "background-color:#dfd">{
+	int index = this-&gt;find(breed, name);</span>
+
+<span style = "background-color:#dfd">	if (index != -1)
+		return false;</span>
+	
+<span style = "background-color:#dfd">	Dog dog = Dog(breed, name, age, photo);
+	this-&gt;repo-&gt;add(dog);
+	return true;
+}</span>
+
+bool Controller::remove(string breed, string name)
+<span style = "background-color:#dfd">{
+	int index = this-&gt;find(breed, name);</span>
+
+<span style = "background-color:#dfd">	if (index == -1)
+		return false;</span>
+	
+<span style = "background-color:#dfd">	this-&gt;repo-&gt;remove(index);
+	return true;
+}</span>
+
+bool Controller::update(string breed, string name, int newAge, string newPhoto, string newBreed, string newName)
+<span style = "background-color:#dfd">{
+	int index = this-&gt;find(breed, name);</span>
+
+<span style = "background-color:#dfd">	if (index == -1)
+		return false;</span>
+	
+<span style = "background-color:#dfd">	if (newPhoto.length() == 0)
+		newPhoto = this-&gt;repo-&gt;dogs.elems[index].photo;
+	if (newAge == 0)
+		newAge = this-&gt;repo-&gt;dogs.elems[index].age;</span>
+
+<span style = "background-color:#dfd">	this-&gt;repo-&gt;update(index, newAge, newPhoto, newBreed, newName);
+	return true;
+}</span>
+
+int Controller::find(string breed, string name)
+<span style = "background-color:#dfd">{
+	Dog d = Dog(breed, name, 0, breed);</span>
+
+<span style = "background-color:#dfd">	vector&lt;Dog&gt;::iterator it = std::find(this-&gt;repo-&gt;dogs.elems.begin(), this-&gt;repo-&gt;dogs.elems.end(), d);</span>
+
+<span style = "background-color:#dfd">	if (it == this-&gt;repo-&gt;dogs.elems.end())
+		return -1;</span>
+
+<span style = "background-color:#dfd">	return it - this-&gt;repo-&gt;dogs.elems.begin();
+}</span></pre>
+	</body>
+</html>

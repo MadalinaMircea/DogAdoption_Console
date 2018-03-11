@@ -1,0 +1,68 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>dog.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "Dog.h"
+#include &lt;Windows.h&gt;
+#include &lt;shellapi.h&gt;
+
+int Dog::currentInstances = 0;
+int Dog::allInstances = 0;
+int Dog::getCurrentInstances()
+<span style = "background-color:#dfd">{
+	return currentInstances;
+}</span>
+int Dog::getAllInstances()
+<span style = "background-color:#dfd">{
+	return allInstances;
+}</span>
+Dog::Dog(string &amp;dogBreed, string &amp;dogName, int dogAge, string &amp;dogPhoto)
+<span style = "background-color:#dfd">{
+	this-&gt;breed = dogBreed;</span>
+
+<span style = "background-color:#dfd">	this-&gt;name = dogName;</span>
+
+<span style = "background-color:#dfd">	this-&gt;age = dogAge;</span>
+
+<span style = "background-color:#dfd">	this-&gt;photo = dogPhoto;</span>
+
+<span style = "background-color:#dfd">	currentInstances++;
+	allInstances++;
+}</span>
+void Dog::showPicture()
+<span style = "background-color:#dfd">{
+	ShellExecuteA(NULL, NULL, "chrome.exe", this-&gt;photo.c_str(), NULL, SW_SHOWMAXIMIZED);
+}</span>
+void Dog::setAge(int newAge)
+<span style = "background-color:#dfd">{
+	this-&gt;age = newAge;
+}</span>
+void Dog::changePhoto(string newPhoto)
+<span style = "background-color:#dfd">{
+	this-&gt;photo = newPhoto;
+}</span>
+void Dog::changeBreed(string newBreed)
+<span style = "background-color:#dfd">{
+	this-&gt;breed = newBreed;
+}</span>
+void Dog::changeName(string newName)
+<span style = "background-color:#dfd">{
+	this-&gt;name = newName;
+}</span>
+
+bool Dog::operator==(const Dog&amp; dog) const
+<span style = "background-color:#dfd">{
+	if (this-&gt;name == dog.name &amp;&amp; this-&gt;breed == dog.breed)
+		return true;</span>
+
+<span style = "background-color:#dfd">	return false;
+}</span></pre>
+	</body>
+</html>

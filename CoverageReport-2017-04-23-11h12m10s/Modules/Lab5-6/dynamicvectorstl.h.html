@@ -1,0 +1,108 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>dynamicvectorstl.h</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#pragma once
+#include "Dog.h"
+#include &lt;iostream&gt;
+#include&lt;vector&gt;
+using namespace std;
+
+template&lt;typename TElement&gt;
+class DynamicVectorSTL
+{
+public:
+	vector&lt;TElement&gt; elems;
+
+	/*Constructor for the DynamicVectorSTL*/
+<span style = "background-color:#dfd">	DynamicVectorSTL() {}
+	~DynamicVectorSTL() {}</span>
+	/*Copy constructor*/
+	DynamicVectorSTL(DynamicVectorSTL&lt;TElement&gt;&amp; v);
+	DynamicVectorSTL operator+(TElement&amp; e)
+<span style = "background-color:#dfd">	{
+		this-&gt;elems.push_back(e);</span>
+
+<span style = "background-color:#dfd">		return *this;
+	}</span>
+	DynamicVectorSTL&lt;TElement&gt; operator=(DynamicVectorSTL&amp; v);
+	TElement&amp; operator[](int i);
+	/*
+	Removes a dog from the DynamicVectorSTL.
+	input - index, an integer representing the position of the object to be deleted
+	output - the pointer is removed from the dogList and destroyed
+	*/
+	void remove(int index);
+	/*
+	Updates the information of a dog from the DynamicVectorSTL
+	input - index, an integer representing the position of the object to be updated
+	- newAge, an integer representing the new age of the dog
+	- newPhoto, an array of characters representing the new link
+	- newBreed, an array of characters representing the new breed
+	- newName, an array of characters representing the new breed
+	output - the information of the dog located on position index is updated
+	*/
+	void update(int index, int newAge, string newPhoto, string newBreed, string newName);
+<span style = "background-color:#dfd">	int getSize() { return elems.size(); };</span>
+};
+
+template&lt;class TElement&gt;
+DynamicVectorSTL&lt;TElement&gt; operator+(TElement&amp; e, DynamicVectorSTL&lt;TElement&gt;&amp; v)
+<span style = "background-color:#dfd">{
+	v.elems.push_back(e);</span>
+
+<span style = "background-color:#dfd">	return v;
+}</span>
+
+template&lt;class TElem&gt;
+DynamicVectorSTL&lt;TElem&gt;::DynamicVectorSTL(DynamicVectorSTL&lt;TElem&gt;&amp; v)
+<span style = "background-color:#dfd">{
+	for (auto d : v.elems)
+		this-&gt;elems.push_back(d);
+}</span>
+
+template&lt;class TElem&gt;
+DynamicVectorSTL&lt;TElem&gt; DynamicVectorSTL&lt;TElem&gt;::operator=(DynamicVectorSTL&amp; v)
+<span style = "background-color:#dfd">{
+	while (this-&gt;getSize() != 0)
+		this-&gt;remove(0);</span>
+
+<span style = "background-color:#dfd">	for (auto d : v.elems)</span>
+	{
+<span style = "background-color:#dfd">		this-&gt;elems.push_back(d);
+	}</span>
+
+<span style = "background-color:#dfd">	return *this;
+}</span>
+
+template&lt;class TElem&gt;
+TElem&amp; DynamicVectorSTL&lt;TElem&gt;::operator[](int i)
+{
+	return this-&gt;elems[i];
+}
+
+template&lt;class TElem&gt;
+void DynamicVectorSTL&lt;TElem&gt;::remove(int index)
+<span style = "background-color:#dfd">{
+	vector&lt;TElem&gt;::iterator it = this-&gt;elems.begin();
+	advance(it, index);
+	this-&gt;elems.erase(it);
+}</span>
+
+template&lt;class TElem&gt;
+void DynamicVectorSTL&lt;TElem&gt;::update(int index, int newAge, string newPhoto, string newBreed, string newName)
+<span style = "background-color:#dfd">{
+	this-&gt;elems[index].setAge(newAge);
+	this-&gt;elems[index].changePhoto(newPhoto);
+	this-&gt;elems[index].changeBreed(newBreed);
+	this-&gt;elems[index].changeName(newName);
+}</span></pre>
+	</body>
+</html>

@@ -1,0 +1,8 @@
+Labrador,Bez,1,http://cdn1-www.dogtime.com/assets/uploads/gallery/labrador-retriever-dog-breed-pictures/labrador-retriever-dog-pictures-1.jpg
+Golden Retriever,Honey,3,http://static.animalzoo.ro/uploads/2015/08/golden2.jpg
+Bichon Havanese,Cody,7,https://i.ytimg.com/vi/ItMCpfBmKgY/hqdefault.jpg
+Bichon Frise,Boy,1,http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Bichon-Frise-3.jpg
+Doberman,Tooth,8,https://s-media-cache-ak0.pinimg.com/736x/20/69/00/206900a83822e1a875f0617a33cecf07.jpg
+Pug,Princess,2,http://i.huffpost.com/gen/3753474/images/o-PUG-facebook.jpg
+Pitbull,Charlie,3,http://americanbullydaily.com/wp-content/uploads/2016/01/Pitbull-Dog-Smiling.jpg
+Pomeranian,Minnie,1,http://www.yeartohelp.com/wp-content/uploads/2012/10/boo.jpg

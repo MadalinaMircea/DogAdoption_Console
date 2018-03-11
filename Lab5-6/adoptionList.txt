@@ -1,0 +1,2 @@
+Labrador,Bez,1,http://cdn1-www.dogtime.com/assets/uploads/gallery/labrador-retriever-dog-breed-pictures/labrador-retriever-dog-pictures-1.jpg
+Bichon Frise,Boy,1,http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Bichon-Frise-3.jpg
